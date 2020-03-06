@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SISTEMA_ANTECEDENTEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MENU">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PERMISOS" Relationship="Self.FK_PERMISOS_MENU" FromRole="MENU" ToRole="PERMISOS" />
+  </EntityType>
+  <EntityType Name="PERMISOS">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Leer" Type="Int32" Nullable="false" />
+    <Property Name="Actualizar" Type="Int32" Nullable="false" />
+    <Property Name="Eliminar" Type="Int32" Nullable="false" />
+    <Property Name="Rolesid" Type="Int32" Nullable="false" />
+    <Property Name="Menuid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MENU" Relationship="Self.FK_PERMISOS_MENU" FromRole="PERMISOS" ToRole="MENU" />
+  </EntityType>
+  <EntityType Name="ROLES">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rol_estado" Type="Int32" Nullable="false" />
+    <Property Name="Rol_create" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cedula" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario_estado" Type="Int32" Nullable="false" />
+    <Property Name="Usuario_create" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Accestoken" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Email_alternativo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rolid" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PERMISOS_MENU">
+    <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
+    <End Role="PERMISOS" Type="Self.PERMISOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PERMISOS">
+        <PropertyRef Name="Menuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SISTEMA_ANTECEDENTEEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MENU" EntityType="Self.MENU" />
+    <EntitySet Name="PERMISOS" EntityType="Self.PERMISOS" />
+    <EntitySet Name="ROLES" EntityType="Self.ROLES" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <AssociationSet Name="FK_PERMISOS_MENU" Association="Self.FK_PERMISOS_MENU">
+      <End Role="MENU" EntitySet="MENU" />
+      <End Role="PERMISOS" EntitySet="PERMISOS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SISTEMA_ANTECEDENTEModelStoreContainer" CdmEntityContainer="SISTEMA_ANTECEDENTEEntities">
+    <EntitySetMapping Name="MENU">
+      <EntityTypeMapping TypeName="SISTEMA_ANTECEDENTEModel.MENU">
+        <MappingFragment StoreEntitySet="MENU">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERMISOS">
+      <EntityTypeMapping TypeName="SISTEMA_ANTECEDENTEModel.PERMISOS">
+        <MappingFragment StoreEntitySet="PERMISOS">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Leer" ColumnName="Leer" />
+          <ScalarProperty Name="Actualizar" ColumnName="Actualizar" />
+          <ScalarProperty Name="Eliminar" ColumnName="Eliminar" />
+          <ScalarProperty Name="Rolesid" ColumnName="Rolesid" />
+          <ScalarProperty Name="Menuid" ColumnName="Menuid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLES">
+      <EntityTypeMapping TypeName="SISTEMA_ANTECEDENTEModel.ROLES">
+        <MappingFragment StoreEntitySet="ROLES">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Rol_estado" ColumnName="Rol_estado" />
+          <ScalarProperty Name="Rol_create" ColumnName="Rol_create" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="SISTEMA_ANTECEDENTEModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Usuario_estado" ColumnName="Usuario_estado" />
+          <ScalarProperty Name="Usuario_create" ColumnName="Usuario_create" />
+          <ScalarProperty Name="Accestoken" ColumnName="Accestoken" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Email_alternativo" ColumnName="Email_alternativo" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="Rolid" ColumnName="Rolid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

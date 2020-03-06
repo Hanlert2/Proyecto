@@ -1,0 +1,60 @@
+﻿@model Consola.Models.ViewsModel.Tabla
+@{
+    ViewBag.Title = "Editar Usuario";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Editar", "Tabla", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+
+            <div>
+                @Html.LabelFor(d => d.nombre)
+                @Html.TextBoxFor(d => d.nombre, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.nombre, null, new { @class = "danger" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.apellido)
+                @Html.TextBoxFor(d => d.apellido, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.apellido, null, new { @class = "danger" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.cedula)
+                @Html.TextBoxFor(d => d.cedula, "", new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.direccion)
+                @Html.TextBoxFor(d => d.direccion, "", new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.correoElectronico)
+                @Html.TextBoxFor(d => d.correoElectronico, "", new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.correoAlternativo)
+                @Html.TextBoxFor(d => d.correoAlternativo, "", new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.contraseña)
+                @Html.TextBoxFor(d => d.contraseña, "", new { @class = "form-control" })
+
+                <div style="text-align:right">
+
+                    <input value="Guardar" class="btn btn-primary" type="submit" />
+
+                </div>
+                <a href="~/Tabla/Index" class="btn btn-primary">Retornar</a>
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+}

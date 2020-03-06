@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SISTEMA_ANTECEDENTEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MENU">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PERMISOS">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Leer" Type="int" Nullable="false" />
+    <Property Name="Actualizar" Type="int" Nullable="false" />
+    <Property Name="Eliminar" Type="int" Nullable="false" />
+    <Property Name="Rolesid" Type="int" Nullable="false" />
+    <Property Name="Menuid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROLES">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Rol_estado" Type="int" Nullable="false" />
+    <Property Name="Rol_create" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cedula" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="100" />
+    <Property Name="Usuario_estado" Type="int" Nullable="false" />
+    <Property Name="Usuario_create" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Accestoken" Type="varchar(max)" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Email_alternativo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Contraseña" Type="varchar(max)" Nullable="false" />
+    <Property Name="Rolid" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PERMISOS_MENU">
+    <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
+    <End Role="PERMISOS" Type="Self.PERMISOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PERMISOS">
+        <PropertyRef Name="Menuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SISTEMA_ANTECEDENTEModelStoreContainer">
+    <EntitySet Name="MENU" EntityType="Self.MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERMISOS" EntityType="Self.PERMISOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PERMISOS_MENU" Association="Self.FK_PERMISOS_MENU">
+      <End Role="MENU" EntitySet="MENU" />
+      <End Role="PERMISOS" EntitySet="PERMISOS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

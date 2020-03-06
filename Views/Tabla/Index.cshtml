@@ -1,0 +1,53 @@
+﻿@model List<Consola.Models.ViewsModel.Lista>
+@{ 
+    ViewBag.Title = "Detalles de usuario";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row" style="text-align:right;padding:5px;">
+    <a href="~/Tabla/Nuevo" class="btn btn-primary">Nuevo Usuario</a>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cedula</th>
+                <th>Direccion</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Estado</th>
+                <th>Opciones</th>
+               
+                </tr>
+            
+                   @foreach (var personas in Model)
+                   {
+
+        <tr>
+           
+            <td>@personas.Id</td>
+            <td>@personas.nombre</td>
+            <td>@personas.apellido</td>
+            <td>@personas.cedula</td>
+            <td>@personas.direccion</td>
+            <td>@personas.correoElectronico</td>
+            <td>@personas.rol</td>
+            <td><a href="" class="btn btn-primary">@personas.estado</a></td>
+            <td><a href="~/Tabla/Editar/@personas.Id" class="btn btn-default">Editar</a></td>
+            <td><a href="~/Tabla/Eliminar/@personas.Id" class="btn btn-danger">Eliminar</a></td>
+
+
+        </tr>
+                   }
+
+
+
+
+
+
+
+           </table>
+        </div>
+    </div>
